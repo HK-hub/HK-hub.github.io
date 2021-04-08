@@ -5,7 +5,7 @@
     
 <meta charset="utf-8" >
 
-<title>Java 集合精讲 | HK--遇见自己遇见你</title>
+<title>Leetcode: 153. 寻找旋转排序数组中的最小值 | HK--遇见自己遇见你</title>
 <meta name="description" content="温故而知新">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -86,25 +86,25 @@
       <div class="content-container">
         <div class="post-detail">
           
-            <div class="feature-container" style="background-image: url('https://HK-hub.github.io/post-images/UTzWFm43F.jpg')">
+            <div class="feature-container" style="background-image: url('https://static.leetcode-cn.com/cn-mono-assets/production/assets/logo-dark-cn.c42314a8.svg')">
             </div>
           
-          <h2 class="post-title">Java 集合精讲</h2>
+          <h2 class="post-title">Leetcode: 153. 寻找旋转排序数组中的最小值</h2>
           <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2021-04-03</span>
+            <span><i class="icon-calendar-outline"></i> 2021-04-08</span>
             
               <span>
                 <i class="icon-pricetags-outline"></i>
                 
-                  <a href="https://HK-hub.github.io/HEq2FEGdO/">
-                    JavaSE
+                  <a href="https://HK-hub.github.io/EcgAu5plv/">
+                    c++
                     
                       ，
                     
                   </a>
                 
-                  <a href="https://HK-hub.github.io/DhcQnJ6jL/">
-                    Java集合
+                  <a href="https://HK-hub.github.io/lKCNa_s2z/">
+                    Leetcode
                     
                   </a>
                 
@@ -112,32 +112,67 @@
             
           </div>
           <div class="post-content">
-            <h1 id="java集合分类树继承树">Java集合分类树，继承树</h1>
-<h1 id="集合分类区别">集合分类/区别</h1>
-<h1 id="线性表">线性表</h1>
-<h2 id="数组实现">数组实现</h2>
-<h2 id="链表实现">链表实现</h2>
-<h1 id="树">树</h1>
-<h2 id="二叉树">二叉树</h2>
-<h2 id="红黑树">红黑树</h2>
-<h2 id="b-树">B-树</h2>
-<h2 id="b树">B+树</h2>
-<h2 id="平衡树">平衡树</h2>
-<h2 id="红黑树-2">红黑树</h2>
-<h1 id="图">图</h1>
-<h2 id="散列算法">散列算法</h2>
-<h2 id="hashmap">HashMap</h2>
-<h1 id="集合元素源码分析">集合元素源码分析</h1>
-<h1 id="手写java集合">手写Java集合</h1>
+            <h1 id="题目">题目：</h1>
+<p>已知一个长度为 <code>n</code> 的数组，预先按照升序排列，经由 <code>1</code> 到 <code>n</code> 次 旋转 后，得到输入数组。例如，原数组 <code>nums = [0,1,2,4,5,6,7]</code> 在变化后可能得到：<br>
+若旋转 <code>4</code>次，则可以得到 <code>[4,5,6,7,0,1,2]</code><br>
+若旋转 <code>7</code> 次，则可以得到 <code>[0,1,2,4,5,6,7]</code><br>
+注意，数组 <code>[a[0], a[1], a[2], ..., a[n-1]]</code> 旋转一次 的结果为数组 <code>[a[n-1], a[0]</code>, <code>a[1], a[2], ..., a[n-2]]</code> 。</p>
+<p>给你一个元素值 互不相同 的数组 <code>nums</code> ，它原来是一个升序排列的数组，并按上述情形进行了多次旋转。请你找出并返回数组中的 最小元素 。</p>
+<p><strong>示例 1：</strong></p>
+<pre><code class="language-c++">输入：nums = [3,4,5,1,2]
+输出：1
+解释：原数组为 [1,2,3,4,5] ，旋转 3 次得到输入数组。
+</code></pre>
+<p><strong>示例</strong> 2：</p>
+<pre><code class="language-c++">输入：nums = [4,5,6,7,0,1,2]
+输出：0
+解释：原数组为 [0,1,2,4,5,6,7] ，旋转 4 次得到输入数组。
+</code></pre>
+<p><strong>示例</strong> 3：</p>
+<pre><code class="language-java">输入：nums = [11,13,15,17]
+输出：11
+解释：原数组为 [11,13,15,17] ，旋转 4 次得到输入数组。
+</code></pre>
+<p><strong>提示</strong>：</p>
+<ul>
+<li>n == nums.length</li>
+<li>1 &lt;= n &lt;= 5000</li>
+<li>-5000 &lt;= nums[i] &lt;= 5000</li>
+<li>nums 中的所有整数 互不相同</li>
+<li>nums 原来是一个升序排序的数组，并进行了 1 至 n 次旋转</li>
+</ul>
+<blockquote>
+<p>来源：力扣（LeetCode）<br>
+链接：https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array<br>
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+</blockquote>
+<h1 id="分析">分析：</h1>
+<p>此题的提交目的就是找到数组中的最小元素，最直接的分析就是遍历寻找最小值， 通过调用函数获取最小值。<br>
+但是仔细观察<code>示例</code>·的特点, 可以发现 <em>最小的元素一定存在于比他前一个元素小的第一个元素</em> <code>-&gt;即为：最下的元素一定是当出现了当前元素小于前一个元素的时候， 这时候当前元素就是最小的， 需要返回的结果</code></p>
+<h1 id="程序">程序：</h1>
+<pre><code class="language-C++">class Solution {
+public:
+    int findMin(vector&lt;int&gt;&amp; nums) {
+        int min = nums[0] ;
+        for(auto elem : nums){
+            if (elem &lt; min){
+                min = elem ;
+                break;
+            }
+        }
+        return min ;
+    }
+};
+</code></pre>
 
           </div>
         </div>
 
         
           <div class="next-post">
-            <a class="purple-link" href="https://HK-hub.github.io/mybatis-plus-fen-ye-quan-jie/">
+            <a class="purple-link" href="https://HK-hub.github.io/YlLcN_yoF/">
               <h3 class="post-title">
-                下一篇：Mybatis Plus 分页全解
+                下一篇：LeetCode: 80. 删除有序数组中的重复项 II
               </h3>
             </a>
           </div>

@@ -5,7 +5,7 @@
     
 <meta charset="utf-8" >
 
-<title>Java 集合精讲 | HK--遇见自己遇见你</title>
+<title>LeetCode: 80. 删除有序数组中的重复项 II | HK--遇见自己遇见你</title>
 <meta name="description" content="温故而知新">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -86,25 +86,32 @@
       <div class="content-container">
         <div class="post-detail">
           
-            <div class="feature-container" style="background-image: url('https://HK-hub.github.io/post-images/UTzWFm43F.jpg')">
+            <div class="feature-container" style="background-image: url('https://static.leetcode-cn.com/cn-mono-assets/production/assets/logo-dark-cn.c42314a8.svg')">
             </div>
           
-          <h2 class="post-title">Java 集合精讲</h2>
+          <h2 class="post-title">LeetCode: 80. 删除有序数组中的重复项 II</h2>
           <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2021-04-03</span>
+            <span><i class="icon-calendar-outline"></i> 2021-04-06</span>
             
               <span>
                 <i class="icon-pricetags-outline"></i>
                 
-                  <a href="https://HK-hub.github.io/HEq2FEGdO/">
-                    JavaSE
+                  <a href="https://HK-hub.github.io/lKCNa_s2z/">
+                    Leetcode
                     
                       ，
                     
                   </a>
                 
-                  <a href="https://HK-hub.github.io/DhcQnJ6jL/">
-                    Java集合
+                  <a href="https://HK-hub.github.io/uKbjuSCfAH/">
+                    数据结构
+                    
+                      ，
+                    
+                  </a>
+                
+                  <a href="https://HK-hub.github.io/3k5d64pFWA/">
+                    算法
                     
                   </a>
                 
@@ -112,32 +119,64 @@
             
           </div>
           <div class="post-content">
-            <h1 id="java集合分类树继承树">Java集合分类树，继承树</h1>
-<h1 id="集合分类区别">集合分类/区别</h1>
-<h1 id="线性表">线性表</h1>
-<h2 id="数组实现">数组实现</h2>
-<h2 id="链表实现">链表实现</h2>
-<h1 id="树">树</h1>
-<h2 id="二叉树">二叉树</h2>
-<h2 id="红黑树">红黑树</h2>
-<h2 id="b-树">B-树</h2>
-<h2 id="b树">B+树</h2>
-<h2 id="平衡树">平衡树</h2>
-<h2 id="红黑树-2">红黑树</h2>
-<h1 id="图">图</h1>
-<h2 id="散列算法">散列算法</h2>
-<h2 id="hashmap">HashMap</h2>
-<h1 id="集合元素源码分析">集合元素源码分析</h1>
-<h1 id="手写java集合">手写Java集合</h1>
+            <h2 id="题目-给你一个有序数组-nums-请你-原地-删除重复出现的元素使每个元素-最多出现两次-返回删除后数组的新长度-不要使用额外的数组空间你必须在-原地-修改输入数组-并在使用-o1额外空间的条件下完成">题目: 给你一个有序数组 <code>nums</code> ，请你 原地 删除重复出现的元素，使每个元素 最多出现两次 ，返回删除后数组的新长度。不要使用额外的数组空间，你必须在 <code>原地</code> 修改输入数组 并在使用 <code>O(1)</code>额外空间的条件下完成。</h2>
+<p>说明：<br>
+为什么返回数值是整数，但输出的答案是数组呢？<br>
+请注意，输入数组是以「引用」方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。<br>
+你可以想象内部操作如下:<br>
+// nums 是以“引用”方式传递的。也就是说，不对实参做任何拷贝<br>
+int len = removeDuplicates(nums);<br>
+// 在函数里修改输入数组对于调用者是可见的。<br>
+// 根据你的函数返回的长度, 它会打印出数组中 该长度范围内 的所有元素。<br>
+for (int i = 0; i &lt; len; i++) {<br>
+print(nums[i]);<br>
+}</p>
+<p>示例 1：<br>
+输入：nums = [1,1,1,2,2,3]<br>
+输出：5, nums = [1,1,2,2,3]<br>
+解释：函数应返回新长度 length = 5, 并且原数组的前五个元素被修改为 1, 1, 2, 2, 3 。 不需要考虑数组中超出新长度后面的元素。</p>
+<p>示例 2：<br>
+输入：nums = [0,0,1,1,1,1,2,3,3]<br>
+输出：7, nums = [0,0,1,1,2,3,3]<br>
+解释：函数应返回新长度 length = 7, 并且原数组的前五个元素被修改为 0, 0, 1, 1, 2, 3, 3 。 不需要考虑数组中超出新长度后面的元素。</p>
+<p>提示：<br>
+1 &lt;= nums.length &lt;= 3 * 104<br>
+-104 &lt;= nums[i] &lt;= 104<br>
+nums 已按升序排列</p>
+<h1 id="题解">题解:</h1>
+<p>思路:  有序数组, 最多存在2个重复的-&gt; 当前数大于前2个数即可满足</p>
+<pre><code class="language-c++">// Created by 31618 on 2020/12/25.
+//
+#include&lt;iostream&gt;
+#include&lt;vector&gt;
+#include &lt;iterator&gt;
+#include&lt;algorithm&gt;
+using namespace std ;
+
+
+int removeDuplicates(vector&lt;int&gt;&amp; nums)
+{
+    int len = 0;
+    for(auto n : nums)
+        if ( len &lt; 2 || nums[len - 2] &lt; n)
+            nums[len++] = n;
+    return len ;
+}
+
+
+
+
+
+</code></pre>
 
           </div>
         </div>
 
         
           <div class="next-post">
-            <a class="purple-link" href="https://HK-hub.github.io/mybatis-plus-fen-ye-quan-jie/">
+            <a class="purple-link" href="https://HK-hub.github.io/UTzWFm43F/">
               <h3 class="post-title">
-                下一篇：Mybatis Plus 分页全解
+                下一篇：Java 集合精讲
               </h3>
             </a>
           </div>
