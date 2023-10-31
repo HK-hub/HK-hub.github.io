@@ -1,5 +1,6 @@
 # Markdown Extension Examples
 
+[[toc]]
 This page demonstrates some of the built-in markdown extensions provided by VitePress.
 
 ## Syntax Highlighting
@@ -83,3 +84,35 @@ This is a details block.
 ## More
 
 Check out the documentation for the [full list of markdown extensions](https://vitepress.dev/guide/markdown).
+
+# title1
+
+this is title 1
+
+## title2
+
+this is title 2
+
+## title 2
+
+this is title 2
+
+### title 3
+
+this is title 3
+
+### title 3
+
+this is title 3
+
+### title 3
+
+this is title 3
+
+### title 3
+
+this is title 3
+
+#### title 4
+
+this is title 4

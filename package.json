@@ -4,5 +4,8 @@
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs",
     "deploy:win": "powershell bin/autoDeploy.bat"
+  },
+  "devDependencies": {
+    "markdown-it-mathjax3": "^4.3.2"
   }
 }
