@@ -8,7 +8,6 @@ hero:
   tagline: 😄很高兴你点开了我的主页🔭 我是一个正在修炼的后端开发实习生🌱 正积极致力于开源事业⚡ 希望我写下的东西能帮助到你
   image:
     # 首页主题右边图片
-    src: public/static/logo/logo.png
     alt: VitePress
   actions:
     - theme: brand
@@ -46,4 +45,3 @@ features:
     title: Another cool feature
     details: Lorem ipsum...
 ---
-

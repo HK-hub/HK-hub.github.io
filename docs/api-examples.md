@@ -27,12 +27,6 @@ const { theme, page, frontmatter } = useData()
 <pre>{{ frontmatter }}</pre>
 ```
 
-<script setup>
-import { useData } from 'vitepress'
-
-const { site, theme, page, frontmatter } = useData()
-</script>
-
 ## Results
 
 ### Theme Data
