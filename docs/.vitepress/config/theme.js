@@ -1,7 +1,8 @@
 // 导航栏配置
 import nav from "./nav"
 // 侧边栏配置
-
+import path from 'path'
+import autoGenerateSideBar from "./sidebar"
 
 
 // 主题配置
@@ -15,50 +16,7 @@ const themeConfig = {
 
     
     // 文章侧边栏列表
-    sidebar: [
-      {
-        text: 'Examples',
-        // 是否可以折叠
-        collapsed: true,
-        items: [
-          { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/api-examples' }
-        ]
-      },
-      {
-        text: 'Vite',
-        collapsed: true,
-        items: [
-          { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/api-examples' }
-        ]
-      },
-      {
-        text: 'IM即时通讯',
-        collapsed: true,
-        items: [
-          { text: 'GeekIM', link: '/im' },
-          { text: '功能总览', link: '/api-examples' }
-        ]
-      },
-      {
-        text: '短链接生成器',
-        collapsed: true,
-        items: [
-          { text: 'ShrotUrlGenerator', link: '/short-url-generator' },
-          { text: '功能总览', link: '/api-examples' }
-        ]
-      },
-      {
-          text: 'Config',
-          collapsed: true,
-          items: [
-            { text: 'Index', link: '/config/' },
-            { text: 'Three', link: '/config/three' },
-            { text: 'Four', link: '/config/four' }
-          ]
-        }
-    ],
+    sidebar: autoGenerateSideBar(path.resolve(__dirname, '../../document')),
 
     // 搜索栏
     search: {

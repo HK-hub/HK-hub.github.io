@@ -3,7 +3,6 @@ import siteConfig from './config/site.js'
 import markdownConfig from './config/markdown.js'
 import themeConfig from './config/theme.js'
 
-
 // 打印出配置
 console.log('siteConfig:', JSON.stringify(siteConfig));
 // console.log('themeConfig:', JSON.stringify(themeConfig));

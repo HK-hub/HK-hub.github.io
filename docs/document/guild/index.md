@@ -1,1 +1,1 @@
-# config idnex.md
+# guild idnex.md

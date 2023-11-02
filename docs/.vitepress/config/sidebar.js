@@ -1,57 +1,44 @@
 // 侧边导航栏目录
-import fs from 'fs'
-const fs = require('fs') 
-function readAll(parentPath) {
-    const files = fs.readdirSync(parentPath)
-    console.log(files);
-}
-readAll('../../document')
+import directoryTree from 'directory-tree';
 
+// 转换为侧边栏选项
+function toSidebarOption(tree = []) {
+    
+    if (!Array.isArray(tree)) return [];
+
+    console.log('tree=', tree);
+    // 遍历
+    return tree.map((v) => {
+        // 是否存在子路径
+        if (v.children) {
+
+            return {
+                text: v.name,
+                collapsible: true,
+                collapsed: true,
+                items: toSidebarOption(v.children)
+            }
+        } else {
+            // 不具有子目录了
+            return {
+                text: v.name.replace(".md", ""),
+                link: v.path.split("docs")[1].replace(".md", "")
+            }
+        }
+    })
+}
+
+// 通过源码目录自动生成导航栏
+function autoGenerateSideBar(documentPath) {
+
+    // 解析传入目录下的指定格式文件
+    const markdwonSource = directoryTree(documentPath, {
+        extensions: /\.md$/,
+        normalizePath: true,
+    });
+
+    return toSidebarOption(markdwonSource.children)
+}
 
 // 文章侧边栏列表
-const side = [
-    {
-      text: 'Examples',
-      // 是否可以折叠
-      collapsed: true,
-      items: [
-        { text: 'Markdown Examples', link: '/markdown-examples' },
-        { text: 'Runtime API Examples', link: '/api-examples' }
-      ]
-    },
-    {
-      text: 'Vite',
-      collapsed: true,
-      items: [
-        { text: 'Markdown Examples', link: '/markdown-examples' },
-        { text: 'Runtime API Examples', link: '/api-examples' }
-      ]
-    },
-    {
-      text: 'IM即时通讯',
-      collapsed: true,
-      items: [
-        { text: 'GeekIM', link: '/im' },
-        { text: '功能总览', link: '/api-examples' }
-      ]
-    },
-    {
-      text: '短链接生成器',
-      collapsed: true,
-      items: [
-        { text: 'ShrotUrlGenerator', link: '/short-url-generator' },
-        { text: '功能总览', link: '/api-examples' }
-      ]
-    },
-    {
-        text: 'Config',
-        collapsed: true,
-        items: [
-          { text: 'Index', link: '/config/' },
-          { text: 'Three', link: '/config/three' },
-          { text: 'Four', link: '/config/four' }
-        ]
-      }
-]
-
-export default side
+export default autoGenerateSideBar
