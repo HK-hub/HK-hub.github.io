@@ -11,6 +11,10 @@ const nav = [
       link: '/document/markdown-examples' 
     },
     { 
+        text: '汇总', 
+        link: '/list' 
+      },
+    { 
       text: '项目', 
       items: [
         { text: 'Geek-IM', link: '/document/guild/one' },

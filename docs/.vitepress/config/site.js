@@ -1,6 +1,8 @@
+import { metaData } from "./constants"
+
 // 网站配置
 const siteConfig = {
-    lang: 'en-US',
+    lang: metaData.lang,
     // 网站标签页标题
     title: "HK意境",
 

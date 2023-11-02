@@ -9,6 +9,9 @@
     "markdown-it-mathjax3": "^4.3.2"
   },
   "dependencies": {
-    "directory-tree": "^3.5.1"
+    "directory-tree": "^3.5.1",
+    "js-yaml": "^4.1.0",
+    "markdown-it-footnote": "^3.0.3",
+    "sass": "^1.69.5"
   }
 }

@@ -6,7 +6,7 @@ function toSidebarOption(tree = []) {
     
     if (!Array.isArray(tree)) return [];
 
-    console.log('tree=', tree);
+    // console.log('tree=', tree);
     // 遍历
     return tree.map((v) => {
         // 是否存在子路径
