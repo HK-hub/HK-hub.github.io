@@ -2,7 +2,6 @@
 
 <script setup>
 import { useData } from 'vitepress'
-import MetaData from '../components/MetaData.vue'
 const { theme, page, frontmatter } = useData()
 </script>
 
@@ -15,5 +14,3 @@ const { theme, page, frontmatter } = useData()
 <pre>{{ frontmatter }}</pre>
 
 ## meta data vue
-
-<MetaData/>

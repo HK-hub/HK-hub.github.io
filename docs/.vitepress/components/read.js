@@ -62,7 +62,7 @@ function readAll(parentPath) {
                         link: tempPath.split("docs")[1].replace(".md", ""),
                         showAccessNumber: true,
                         summary: content.slice(0, 100),
-                        category: [],
+                        categories: [],
                         tags: []
                     })
                 }

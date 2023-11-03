@@ -2,7 +2,7 @@ import { metaData } from './constants'
 
 // copy from https://gitee.com/ewsq/charles7c/blob/main/docs/.vitepress/config/head.ts
 export const head = [
-    ['link', { rel: 'icon', href: '/favicon.ico' }],
+    ['link', { rel: 'icon', href: '/logo/logo.png' }],
     ['meta', { name: 'author', content: 'HK意境' }],
     ['meta', { name: 'description', content: 'HK意境的知识库, 知识库, 博客, HK意境, 生活体会, 学历历程, 人生思考'}],
     ['meta', { name: 'keywords', content: 'HK意境的知识库, 知识库, 博客, HK意境, 生活体会, 学历历程, 人生思考' }],

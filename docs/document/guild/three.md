@@ -3,7 +3,7 @@ title: 测试标题three
 author: hk
 date: '2023-10-24'
 showAccessNumber: true
-category: 
+categories: 
  - 测试分类three
 tags: 
  - 测试标签1three

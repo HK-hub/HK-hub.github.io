@@ -19,8 +19,8 @@ export function useDocs() {
     // 统计分类和标签
     docData.map(item => {
         docNum++
-        if (item.category) {
-            item.category.map(c => {
+        if (item.categories) {
+            item.categories.map(c => {
                 if (!categories[c]) {
                     categories[c] = 0
                 }

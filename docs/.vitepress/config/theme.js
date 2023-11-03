@@ -11,9 +11,11 @@ const themeConfig = {
     siteTitle: "HK意境",
     logo: "../../public/static/logo/logo.png",
 
+    // 启动页面丝滑滚动
+    smoothScroll: true,
+
     // https://vitepress.dev/reference/default-theme-config
     nav: nav,
-
     
     // 文章侧边栏列表
     sidebar: autoGenerateSideBar(path.resolve(__dirname, '../../document')),
@@ -37,8 +39,8 @@ const themeConfig = {
 
     // 页脚
     footer: {
-      message: 'Released under the MIT License.',
-      copyright: 'Copyright © 2019-present HK意境'
+      message: '做高质量的编程内容网站，欢迎 star ⭐ 让更多人发现',
+      copyright: 'MIT License | 版权所有 Copyright © 2019-present HK意境'
     },
 
     // 大纲级别
@@ -54,9 +56,12 @@ const themeConfig = {
 
     // 文档底部
     docFooter: {
-      prev: '<——上一页',
-      next: '下一页——>'
+      prev: '<——上一篇',
+      next: '下一篇——>'
     },
+    
+    returnToTopLabel: '返回顶部',
+
     // 外部链接图标
     externalLinkIcon: true,
 

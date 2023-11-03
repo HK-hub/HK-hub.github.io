@@ -3,12 +3,21 @@
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs",
-    "deploy:win": "powershell bin/autoDeploy.bat"
+    "deploy:win": "powershell bin/autoDeploy.bat",
+    "documate:upload": "documate upload"
   },
   "devDependencies": {
+    "@documate/documate": "^0.2.1",
+    "@vuepress/plugin-active-header-links": "^1.9.10",
+    "@vuepress/plugin-back-to-top": "^1.9.10",
+    "@vuepress/plugin-medium-zoom": "^1.9.10",
+    "@vuepress/plugin-nprogress": "^1.9.10",
     "markdown-it-mathjax3": "^4.3.2"
   },
   "dependencies": {
+    "@documate/vue": "^0.3.1",
+    "busuanzi.pure.js": "^1.0.3",
+    "dayjs": "^1.11.10",
     "directory-tree": "^3.5.1",
     "js-yaml": "^4.1.0",
     "markdown-it-footnote": "^3.0.3",

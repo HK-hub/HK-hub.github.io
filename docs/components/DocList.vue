@@ -7,18 +7,27 @@ const dcos = useData()
 </script>
 
 <template>
-    <a v-for="item in docData" :key="item.title" :href="item.link" class="docs">
-        <div class="docs-title">
-          {{ item.title }}
-          <span class="docs-info docs-tag" v-for="c in item.category" :key="c">📚{{ c }}</span>
-        </div>
-        <div class="docs-footer">
-          <span class="docs-info">🕐{{ item.date }}</span>
-          <span class="docs-info">✍️{{ item.author }}</span>
-          <span>
-            🔗
-            <span class="docs-info docs-tag" v-for="tag in item.tags" :key="tag">{{ tag }}</span>
-          </span>
-        </div>
-    </a>
+    <div v-for="item in docData" :key="item.title" >
+        <a :href="item.link" class="docs" target="_blank">
+            <div>
+                {{ item.title }}
+            </div>
+            <span class="docs-info docs-tag" v-for="c in item.categories" :key="c">📚{{ c }}</span>
+            <span class="docs-info">🕐{{ item.date }}</span>
+            <span class="docs-info">✍️{{ item.author }}</span>
+            <span v-if="item.tags !== undefined && item.tags != 0">
+                🔗
+                <span class="docs-info docs-tag" v-for="tag in item.tags" :key="tag">{{ tag }}</span>
+            </span>
+        </a>
+    </div>
 </template>
+
+
+<style>
+  .docs-info{
+    font-size: 13px;
+    color: #7f7f7f;
+    margin-right: 10px;
+  }
+</style>
