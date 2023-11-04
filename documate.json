@@ -1,0 +1,13 @@
+{
+  "root": ".",
+  "include": [
+    "**/*.md",
+    "**/*.mdx"
+  ],
+  "backend": "",
+  "exclude": [
+    "node_modules/**/*",
+    "**/README.md",
+    "**/TODO.md"
+  ]
+}
