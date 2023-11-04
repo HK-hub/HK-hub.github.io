@@ -9,7 +9,7 @@ import autoGenerateSideBar from "./sidebar"
 const themeConfig = {
     // 导航栏标题
     siteTitle: "HK意境",
-    logo: "../../public/static/logo/logo.png",
+    logo: "/logo/logo.png",
 
     // 启动页面丝滑滚动
     smoothScroll: true,
