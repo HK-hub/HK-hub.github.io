@@ -42,11 +42,7 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Install dependencies
-<<<<<<< HEAD
-        run: npm ci
-=======
         run: npm install
->>>>>>> 6b9bcd942b492ff53915979bf36f1db40be4c9e9
       - name: Build with VitePress
         run: |
           npm run docs:build
