@@ -137,3 +137,17 @@
   --docsearch-primary-color: var(--vp-c-brand-1) !important;
 }
 
+/** 侧边栏文字超出隐藏**/
+.VPSidebarItem .VPLink p {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  max-width: 200px;
+}
+
+/** 翻页按钮标题文字超出隐藏**/
+.VPDocFooter .pager .title {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}

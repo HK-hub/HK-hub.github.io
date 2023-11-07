@@ -8,7 +8,7 @@ const nav = [
     },
     { 
       text: '文章', 
-      link: '/document/markdown-examples' 
+      link: '/document/guild/one/' 
     },
     { 
         text: '汇总', 
