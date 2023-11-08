@@ -1,6 +1,3 @@
-/**
- * 
- */
 import { metaData } from "./constants"
 
 // 网站配置
