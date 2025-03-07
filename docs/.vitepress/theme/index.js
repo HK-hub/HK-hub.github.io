@@ -3,7 +3,7 @@ import { h, onMounted, watch, nextTick } from 'vue'
 import DefaultTheme from 'vitepress/theme'
 import DocBefore from '../../components/DocBefore.vue'
 import CustomAds from '../../components/CustomAds.vue'
-import Comment from '../../components/Comment.vue'
+import Comment  from '../../components/Comment.vue'
 import Documate from '@documate/vue'
 import '@documate/vue/dist/style.css'
 import './style.css'
@@ -21,10 +21,9 @@ export default {
   Layout: h(DefaultTheme.Layout, null, {
     // 对应的插槽位置
     'doc-before': () => h(DocBefore),
-    /** / Ask AI组件
-    /'nav-bar-content-before': () => h(Documate, {
+    'nav-bar-content-before': () => h(Documate, {
       endpoint: '',
-    }), **/
+    }),
     // 自定义广告组件
     'aside-ads-after': () => h(CustomAds, {
       items: [{
@@ -34,7 +33,7 @@ export default {
       }]
     }),
     // 评论组件
-    'doc-after': () => h(Comment)
+    'doc-after': () => h(Comment),
   }),
 
   enhanceApp({ app, router, siteData }) {

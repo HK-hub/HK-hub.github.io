@@ -20,7 +20,9 @@ export const head = [
     ['meta', { property: 'og:site', content: metaData.site }],
     ['meta', { property: 'og:site_name', content: metaData.title }],
     ['meta', { property: 'og:image', content: metaData.image }],
-  
+    
+    // git discussion评论
+    ['script', {src: 'https://esm.sh/giscus', type: 'module'}]
     // 百度统计代码：https://tongji.baidu.com
     // 页面访问量统计
 ];

@@ -65,11 +65,7 @@ const themeConfig = {
     // 外部链接图标
     externalLinkIcon: true,
 
-    // 自定义广告组件配置
-    /** carbonAds: {
-      custom: true,
-      component: 'CustomAds'
-    } **/
+    
 }
 
 

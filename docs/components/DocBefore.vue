@@ -44,35 +44,31 @@ const { frontmatter } = useData() //这里的frontmatter就是各个md文件中�
 .categories-container, .tags-container {
     display: inline-flex;
     align-items: center;
-    gap: 2px;
+    gap: 8px;
 }
 
 .category-tag, .tag {
-    padding: 2px 6px;
-    border-radius: 4px;
+    padding: 3px 8px;
+    border-radius: 12px;
     font-size: 12px;
-    font-weight: 400;
+    font-weight: 500;
     cursor: pointer;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    line-height: 1.6;
-    display: inline-flex;
-    align-items: center;
+    transition: all 0.3s ease;
 }
 
 .category-tag {
-    background-color: rgba(64, 158, 255, 0.1);
-    color: rgb(64, 158, 255);
-    border: 1px solid rgba(64, 158, 255, 0.2);
+    background: linear-gradient(135deg, var(--vp-c-brand-light) 0%, var(--vp-c-brand) 100%);
+    color: var(--vp-c-white);
 }
 
 .tag {
-    background-color: rgba(144, 147, 153, 0.1);
-    color: rgb(144, 147, 153);
-    border: 1px solid rgba(144, 147, 153, 0.2);
+    background: var(--vp-c-bg-soft);
+    color: var(--vp-c-text-2);
+    border: 1px solid var(--vp-c-divider);
 }
 
 .category-tag:hover, .tag:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 </style>
