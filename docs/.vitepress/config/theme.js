@@ -65,11 +65,11 @@ const themeConfig = {
     // 外部链接图标
     externalLinkIcon: true,
 
-    // 广告
-    carbonAds: {
-      code: 'your-carbon-code',
-      placement: 'your-carbon-placement'
-    }
+    // 自定义广告组件配置
+    /** carbonAds: {
+      custom: true,
+      component: 'CustomAds'
+    } **/
 }
 
 

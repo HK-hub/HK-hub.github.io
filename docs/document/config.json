@@ -1,0 +1,106 @@
+{
+    // 监听端口
+    "port": 9090,
+    // 日志记录
+    "logs": {
+        // 访问日志
+        "access": {
+            // 存放路径
+            "dir": "/log/access",
+            // 日志名称及滚动规则: 支持参数%date表示日期(yyy-MM-dd), %i表示日志索引(从1开始),
+            "rule": "access_log-%date-%i.log",
+            // 单个日志最大大小,默认1024超过进行滚动
+            "size": 1024,
+            // 日志大小单位,可选[KB,MB,GB],默认KB
+            "unit": "KB"
+        },
+        // 错误日志
+        "error": {
+            // 存放路径
+            "dir": "/log/error",
+            // 日志名称及滚动规则: 支持参数%date表示日期(yyy-MM-dd), %i表示日志索引(从1开始),
+            "rule": "error_log-%date-%i.log",
+            // 单个日志最大大小,默认1024超过进行滚动
+            "size": 1024,
+            // 日志大小单位,可选[KB,MB,GB],默认KB
+            "unit": "KB"
+        }
+    },
+    // 前端静态资源
+    "frontends": [
+        {
+            // 请求路径
+            "path": "/",
+            // 对应资源路径
+            "dir": "D:/中冶赛迪/混匀物料/部署程序/前端/电文/dist/index.html",
+            // 后续还需要考虑缓存
+            "cache": {
+                // 是否启用缓存
+                "enable": true,
+                // 缓存秒数
+                "maxAge": 65535
+            }
+            // 后续还需要考虑404等
+        },
+        {
+            "path": "/index",
+            "dir": ""
+        },
+        {
+            "path": "/profile",
+            "dir": ""
+        },
+        {
+            "path": "/video",
+            "dir": ""
+        }
+    ],
+    // 代理的上游
+    "upstreams": [
+        {
+            // 代理的前缀
+            "path": "/api",
+            // 代理的服务地址, 可以进行负载均衡
+            "servers": [
+                "http://localhost:8080/",
+                "http://localhost:8080/",
+                "http://localhost:8080/"
+            ],
+            // 负载均衡策略: 轮询roll，随机random，一致性hash
+            "loadBalance": "roll"
+        },
+        {
+            // 代理的前缀, 支持正则表达式
+            "path": "/server",
+            // 代理的服务地址, 可以进行负载均衡
+            "servers": [
+                "http://localhost:8080/",
+                "http://localhost:8080/",
+                "http://localhost:8080/"
+            ],
+            // 负载均衡策略: 轮询roll，随机random，一致性hash
+            "loadBalance": "random"
+        }
+    ],
+    // 错误处理
+    "errors": [
+        {
+            // 状态码
+            "code": 404,
+            // 资源页面
+            "dir": ""
+        },
+        {
+            // 状态码
+            "code": 401,
+            // 资源页面
+            "dir": ""
+        },
+        {
+            // 状态码
+            "code": 500,
+            // 资源页面
+            "dir": ""
+        }
+    ]
+}

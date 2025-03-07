@@ -3,6 +3,7 @@ import DefaultTheme from 'vitepress/theme'
 import { useData } from 'vitepress'
 import Documate from '@documate/vue'
 import '@documate/vue/dist/style.css'
+import CustomAds from '../components/CustomAds'
 
 const { Layout } = DefaultTheme
 const { frontmatter } = useData() //这里的frontmatter就是各个md文件中自己写在最上面的东西
