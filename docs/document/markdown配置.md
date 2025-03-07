@@ -1,3 +1,6 @@
+---
+description: Markdown 详细扩展配置
+---
 # Markdown Extensions
 
 VitePress comes with built in Markdown Extensions.

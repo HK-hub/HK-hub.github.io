@@ -4,8 +4,8 @@ import { metaData } from './constants'
 export const head = [
     ['link', { rel: 'icon', href: '/logo/logo.png' }],
     ['meta', { name: 'author', content: 'HK意境' }],
-    ['meta', { name: 'description', content: 'HK意境的知识库, 知识库, 博客, HK意境, 生活体会, 学历历程, 人生思考'}],
-    ['meta', { name: 'keywords', content: 'HK意境的知识库, 知识库, 博客, HK意境, 生活体会, 学历历程, 人生思考' }],
+    ['meta', { name: 'description', content: 'HK意境的知识库, 知识库, 博客, HK意境, 生活体会, 学习历程, 人生思考'}],
+    ['meta', { name: 'keywords', content: 'HK意境的知识库, 知识库, 博客, HK意境, 生活体会, 学习历程, 人生思考, GeeK IM' }],
   
     ['meta', { name: 'HandheldFriendly', content: 'True' }],
     ['meta', { name: 'MobileOptimized', content: '320' }],

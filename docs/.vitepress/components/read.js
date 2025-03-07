@@ -73,13 +73,11 @@ function readAll(parentPath) {
 
 // 读取markdown头信息保存为json
 function readToJson(parentPath, jsonPath) {
-
     readAll(parentPath)
     fs.writeFileSync(jsonPath, 
         JSON.stringify(out),
         {encoding: 'utf8'}
     )
-
     return out
 }
 

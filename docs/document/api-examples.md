@@ -1,5 +1,6 @@
 ---
 outline: deep
+description: VitePress
 ---
 
 # Runtime API Examples

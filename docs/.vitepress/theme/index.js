@@ -1,6 +1,7 @@
 // https://vitepress.dev/guide/custom-theme
 import { h, onMounted, watch, nextTick } from 'vue'
 import DefaultTheme from 'vitepress/theme'
+import OGMetadata from '../../components/OGMetadata.vue'
 import DocBefore from '../../components/DocBefore.vue'
 import CustomAds from '../../components/CustomAds.vue'
 import Comment  from '../../components/Comment.vue'
@@ -20,10 +21,14 @@ export default {
   // https://vitepress.dev/guide/extending-default-theme#layout-slots
   Layout: h(DefaultTheme.Layout, null, {
     // 对应的插槽位置
+    // 文章meta信息重写
+    'doc-top': () => h(OGMetadata),
+    // 文章分类，标签展示
     'doc-before': () => h(DocBefore),
+    /** // Ask AI
     'nav-bar-content-before': () => h(Documate, {
       endpoint: '',
-    }),
+    }), **/
     // 自定义广告组件
     'aside-ads-after': () => h(CustomAds, {
       items: [{
@@ -37,7 +42,7 @@ export default {
   }),
 
   enhanceApp({ app, router, siteData }) {
-    // ...
+    // 页面访问统计
     if (inBrowser) {
       router.onAfterRouteChanged = (to) => {
         busuanzi.fetch()

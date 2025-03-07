@@ -5,6 +5,7 @@ import themeConfig from './config/theme.js'
 import readToJson from './components/read.js'
 import path from 'path'
 import { head } from './config/head.js'
+import { createRssFile } from './utils/rss.js'
 
 // 打印出配置
 // console.log('siteConfig:', JSON.stringify(siteConfig));
@@ -29,6 +30,9 @@ export default defineConfig({
 
   // markdown 配置
   markdown: markdownConfig,
+
+  // RSS订阅构建
+  buildEnd: createRssFile,
 
   // 使用插件
   plugins: [

@@ -7,8 +7,8 @@ const siteConfig = {
     title: "HK意境",
 
     // 内容主题
-    siteTitle: "HK意境Blog",
-    description: "知识宝库，生活体会，学历历程，人生思考",
+    siteTitle: "HK意境的知识库",
+    description: metaData.description,
 
     // 简洁url, 生成的链接不带.html
     cleanUrls: true,
@@ -20,7 +20,11 @@ const siteConfig = {
     srcDir: './',
 
     // 当设置为true时，VitePress 不会因死链接而导致构建失败。
-    ignoreDeadLinks: true
-}
+    ignoreDeadLinks: true,
 
-export default siteConfig
+    // sitemap配置
+    sitemap: {
+        hostname: 'https://hk-hub.github.io/'
+    },
+}
+export default siteConfig;
