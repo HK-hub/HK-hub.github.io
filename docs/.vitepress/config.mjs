@@ -14,6 +14,10 @@ import { transformFrontmatter } from './utils/frontmatter-transform.js'
 // console.log('themeConfig:', JSON.stringify(themeConfig));
 // console.log('markdonConfig:', JSON.stringify(markdownConfig));
 
+// 补充formatter
+transformFrontmatter({
+  srcDir: path.resolve(__dirname, '../document')
+})
 // 读取所有markdown 文件
 readToJson(path.resolve(__dirname, '../document'), path.resolve(__dirname, './components/frontmatter.json'))
 
@@ -33,14 +37,6 @@ export default defineConfig({
   // markdown 配置
   markdown: markdownConfig,
 
-  // 构建开始时处理markdown文件
-  buildStart: async (config) => {
-    // 先处理frontmatter信息
-    await transformFrontmatter(config);
-    // 再添加公众号信息
-    await transformMarkdownFiles(config);
-  },
-  
   // RSS订阅构建
   buildEnd: createRssFile,
 

@@ -1,6 +1,13 @@
 ---
 description: Markdown 详细扩展配置
+title: markdown配置
+date: 2025/3/7 17:32:44
+author: HK意境
+showAccessNumber: true
+categories: []
+tags: []
 ---
+
 # Markdown Extensions
 
 VitePress comes with built in Markdown Extensions.

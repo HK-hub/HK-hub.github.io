@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    <channel>
+        <title>HK意境的知识库</title>
+        <link>https://hk-hub.github.io</link>
+        <description>知识宝库、生活体会、学习历程、人生思考尽在其中</description>
+        <lastBuildDate>Sat, 08 Mar 2025 02:44:38 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <language>zh-CN</language>
+        <image>
+            <title>HK意境的知识库</title>
+            <url>https://blog.geekim.cn/static/logo/logo.png</url>
+            <link>https://hk-hub.github.io</link>
+        </image>
+        <copyright>Copyright (c) 2024-present HK意境</copyright>
+        <item>
+            <title><![CDATA[api-examples]]></title>
+            <link>https://hk-hub.github.io/document/api-examples</link>
+            <guid>https://hk-hub.github.io/document/api-examples</guid>
+            <pubDate>Sat, 08 Mar 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[VitePress]]></description>
+            <content:encoded><![CDATA[<h1 id="runtime-api-examples" tabindex="-1">Runtime API Examples <a class="header-anchor" href="#runtime-api-examples" aria-label="Permalink to &quot;Runtime API Examples&quot;">&ZeroWidthSpace;</a></h1>
+<p>This page demonstrates usage of some of the runtime APIs provided by VitePress.</p>
+<p>The main <code>useData()</code> API can be used to access site, theme, and page data for the current page. It works in both <code>.md</code> and <code>.vue</code> files:</p>
+<div class="language-md vp-adaptive-theme line-numbers-mode"><button title="Copy Code" class="copy"></button><span class="lang">md</span><pre v-pre class="shiki github-dark vp-code-dark" ><code><span class="line"><span style="color: #E1E4E8">&lt;script setup&gt;</span></span>
+<span class="line"><span style="color: #E1E4E8">import { useData } from &#39;vitepress&#39;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #E1E4E8">const { theme, page, frontmatter } = useData()</span></span>
+<span class="line"><span style="color: #E1E4E8">&lt;/script&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #79B8FF; font-weight: bold">## Results</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #79B8FF; font-weight: bold">### Theme Data</span></span>
+<span class="line"><span style="color: #E1E4E8">&lt;pre&gt;{{ theme }}&lt;/pre&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #79B8FF; font-weight: bold">### Page Data</span></span>
+<span class="line"><span style="color: #E1E4E8">&lt;pre&gt;{{ page }}&lt;/pre&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #79B8FF; font-weight: bold">### Page Frontmatter</span></span>
+<span class="line"><span style="color: #E1E4E8">&lt;pre&gt;{{ frontmatter }}&lt;/pre&gt;</span></span></code></pre><pre v-pre class="shiki github-light vp-code-light" ><code><span class="line"><span style="color: #24292E">&lt;script setup&gt;</span></span>
+<span class="line"><span style="color: #24292E">import { useData } from &#39;vitepress&#39;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #24292E">const { theme, page, frontmatter } = useData()</span></span>
+<span class="line"><span style="color: #24292E">&lt;/script&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #005CC5; font-weight: bold">## Results</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #005CC5; font-weight: bold">### Theme Data</span></span>
+<span class="line"><span style="color: #24292E">&lt;pre&gt;{{ theme }}&lt;/pre&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #005CC5; font-weight: bold">### Page Data</span></span>
+<span class="line"><span style="color: #24292E">&lt;pre&gt;{{ page }}&lt;/pre&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #005CC5; font-weight: bold">### Page Frontmatter</span></span>
+<span class="line"><span style="color: #24292E">&lt;pre&gt;{{ frontmatter }}&lt;/pre&gt;</span></span></code></pre>
+<div class="line-numbers-wrapper" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><h2 id="results" tabindex="-1">Results <a class="header-anchor" href="#results" aria-label="Permalink to &quot;Results&quot;">&ZeroWidthSpace;</a></h2>
+<h3 id="theme-data" tabindex="-1">Theme Data <a class="header-anchor" href="#theme-data" aria-label="Permalink to &quot;Theme Data&quot;">&ZeroWidthSpace;</a></h3>
+<pre>{{ theme }}</pre>
+<h3 id="page-data" tabindex="-1">Page Data <a class="header-anchor" href="#page-data" aria-label="Permalink to &quot;Page Data&quot;">&ZeroWidthSpace;</a></h3>
+<pre>{{ page }}</pre>
+<h3 id="page-frontmatter" tabindex="-1">Page Frontmatter <a class="header-anchor" href="#page-frontmatter" aria-label="Permalink to &quot;Page Frontmatter&quot;">&ZeroWidthSpace;</a></h3>
+<pre>{{ frontmatter }}</pre>
+<h2 id="more" tabindex="-1">More <a class="header-anchor" href="#more" aria-label="Permalink to &quot;More&quot;">&ZeroWidthSpace;</a></h2>
+<p>Check out the documentation for the <a href="https://vitepress.dev/reference/runtime-api#usedata" target="_blank" rel="noreferrer">full list of runtime APIs</a>.</p>
+]]></content:encoded>
+            <author>3161880795@qq.com (HK意境)</author>
+            <enclosure url="https://blog.geekim.cn/static/logo/logo.png" length="0" type="image/png"/>
+        </item>
+        <item>
+            <title><![CDATA[frontmatter配置]]></title>
+            <link>https://hk-hub.github.io/document/frontmatter配置</link>
+            <guid>https://hk-hub.github.io/document/frontmatter配置</guid>
+            <pubDate>Sat, 08 Mar 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[VitePress r325r4235r43]]></description>
+            <content:encoded><![CDATA[<h1 id="测试markdown文件元数据" tabindex="-1">测试markdown文件元数据 <a class="header-anchor" href="#测试markdown文件元数据" aria-label="Permalink to &quot;测试markdown文件元数据&quot;">&ZeroWidthSpace;</a></h1>
+<h3 id="page-data" tabindex="-1">Page Data <a class="header-anchor" href="#page-data" aria-label="Permalink to &quot;Page Data&quot;">&ZeroWidthSpace;</a></h3>
+<pre>{{ page }}</pre>
+<h3 id="page-frontmatter" tabindex="-1">Page Frontmatter <a class="header-anchor" href="#page-frontmatter" aria-label="Permalink to &quot;Page Frontmatter&quot;">&ZeroWidthSpace;</a></h3>
+<pre>{{ frontmatter }}</pre>
+<h2 id="meta-data-vue" tabindex="-1">meta data vue <a class="header-anchor" href="#meta-data-vue" aria-label="Permalink to &quot;meta data vue&quot;">&ZeroWidthSpace;</a></h2>
+]]></content:encoded>
+            <author>3161880795@qq.com (HK意境)</author>
+            <enclosure url="https://blog.geekim.cn/static/logo/logo.png" length="0" type="image/png"/>
+        </item>
+        <item>
+            <title><![CDATA[index]]></title>
+            <link>https://hk-hub.github.io/document/guild/</link>
+            <guid>https://hk-hub.github.io/document/guild/</guid>
+            <pubDate>Sat, 08 Mar 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[guild idnex.md &ZeroWidthSpace;
+图片测试
+
+...]]></description>
+            <content:encoded><![CDATA[<h1 id="guild-idnex-md" tabindex="-1">guild idnex.md <a class="header-anchor" href="#guild-idnex-md" aria-label="Permalink to &quot;guild idnex.md&quot;">&ZeroWidthSpace;</a></h1>
+<p>图片测试
+<img src="./../../public/static/logo/logo.png" alt=""></p>
+]]></content:encoded>
+            <author>3161880795@qq.com (HK意境)</author>
+            <enclosure url="https://hk-hub.github.io/../../public/static/logo/logo.png" length="0" type="image/png"/>
+        </item>
+        <item>
+            <title><![CDATA[index]]></title>
+            <link>https://hk-hub.github.io/document/guild/java/JVM虚拟机/</link>
+            <guid>https://hk-hub.github.io/document/guild/java/JVM虚拟机/</guid>
+            <pubDate>Sat, 08 Mar 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[jvm idnex.md &ZeroWidthSpace;
+...]]></description>
+            <content:encoded><![CDATA[<h1 id="jvm-idnex-md" tabindex="-1">jvm idnex.md <a class="header-anchor" href="#jvm-idnex-md" aria-label="Permalink to &quot;jvm idnex.md&quot;">&ZeroWidthSpace;</a></h1>
+]]></content:encoded>
+            <author>3161880795@qq.com (HK意境)</author>
+            <enclosure url="https://blog.geekim.cn/static/logo/logo.png" length="0" type="image/png"/>
+        </item>
+        <item>
+            <title><![CDATA[one]]></title>
+            <link>https://hk-hub.github.io/document/guild/java/JVM虚拟机/one</link>
+            <guid>https://hk-hub.github.io/document/guild/java/JVM虚拟机/one</guid>
+            <pubDate>Sat, 08 Mar 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[java one.md &ZeroWidthSpace;
+...]]></description>
+            <content:encoded><![CDATA[<h1 id="java-one-md" tabindex="-1">java one.md <a class="header-anchor" href="#java-one-md" aria-label="Permalink to &quot;java one.md&quot;">&ZeroWidthSpace;</a></h1>
+]]></content:encoded>
+            <author>3161880795@qq.com (HK意境)</author>
+            <enclosure url="https://blog.geekim.cn/static/logo/logo.png" length="0" type="image/png"/>
+        </item>
+        <item>
+            <title><![CDATA[three]]></title>
+            <link>https://hk-hub.github.io/document/guild/java/JVM虚拟机/three</link>
+            <guid>https://hk-hub.github.io/document/guild/java/JVM虚拟机/three</guid>
+            <pubDate>Sat, 08 Mar 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[java three.md &ZeroWidthSpace;
+...]]></description>
+            <content:encoded><![CDATA[<h1 id="java-three-md" tabindex="-1">java three.md <a class="header-anchor" href="#java-three-md" aria-label="Permalink to &quot;java three.md&quot;">&ZeroWidthSpace;</a></h1>
+]]></content:encoded>
+            <author>3161880795@qq.com (HK意境)</author>
+            <enclosure url="https://blog.geekim.cn/static/logo/logo.png" length="0" type="image/png"/>
+        </item>
+        <item>
+            <title><![CDATA[two]]></title>
+            <link>https://hk-hub.github.io/document/guild/java/JVM虚拟机/two</link>
+            <guid>https://hk-hub.github.io/document/guild/java/JVM虚拟机/two</guid>
+            <pubDate>Sat, 08 Mar 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[java two.md &ZeroWidthSpace;
+...]]></description>
+            <content:encoded><![CDATA[<h1 id="java-two-md" tabindex="-1">java two.md <a class="header-anchor" href="#java-two-md" aria-label="Permalink to &quot;java two.md&quot;">&ZeroWidthSpace;</a></h1>
+]]></content:encoded>
+            <author>3161880795@qq.com (HK意境)</author>
+            <enclosure url="https://blog.geekim.cn/static/logo/logo.png" length="0" type="image/png"/>
+        </item>
+        <item>
+            <title><![CDATA[index]]></title>
+            <link>https://hk-hub.github.io/document/guild/java/</link>
+            <guid>https://hk-hub.github.io/document/guild/java/</guid>
+            <pubDate>Sat, 08 Mar 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[java idnex.md &ZeroWidthSpace;
+...]]></description>
+            <content:encoded><![CDATA[<h1 id="java-idnex-md" tabindex="-1">java idnex.md <a class="header-anchor" href="#java-idnex-md" aria-label="Permalink to &quot;java idnex.md&quot;">&ZeroWidthSpace;</a></h1>
+]]></content:encoded>
+            <author>3161880795@qq.com (HK意境)</author>
+            <enclosure url="https://blog.geekim.cn/static/logo/logo.png" length="0" type="image/png"/>
+        </item>
+        <item>
+            <title><![CDATA[one]]></title>
+            <link>https://hk-hub.github.io/document/guild/java/one</link>
+            <guid>https://hk-hub.github.io/document/guild/java/one</guid>
+            <pubDate>Sat, 08 Mar 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[java one.md &ZeroWidthSpace;
+...]]></description>
+            <content:encoded><![CDATA[<h1 id="java-one-md" tabindex="-1">java one.md <a class="header-anchor" href="#java-one-md" aria-label="Permalink to &quot;java one.md&quot;">&ZeroWidthSpace;</a></h1>
+]]></content:encoded>
+            <author>3161880795@qq.com (HK意境)</author>
+            <enclosure url="https://blog.geekim.cn/static/logo/logo.png" length="0" type="image/png"/>
+        </item>
+        <item>
+            <title><![CDATA[three]]></title>
+            <link>https://hk-hub.github.io/document/guild/java/three</link>
+            <guid>https://hk-hub.github.io/document/guild/java/three</guid>
+            <pubDate>Sat, 08 Mar 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[java three.md &ZeroWidthSpace;
+...]]></description>
+            <content:encoded><![CDATA[<h1 id="java-three-md" tabindex="-1">java three.md <a class="header-anchor" href="#java-three-md" aria-label="Permalink to &quot;java three.md&quot;">&ZeroWidthSpace;</a></h1>
+]]></content:encoded>
+            <author>3161880795@qq.com (HK意境)</author>
+            <enclosure url="https://blog.geekim.cn/static/logo/logo.png" length="0" type="image/png"/>
+        </item>
+    </channel>
+</rss>

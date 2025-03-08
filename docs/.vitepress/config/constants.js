@@ -26,6 +26,7 @@ const wechatInfo = {
 export const metaData = {
     lang,
     locale: 'zh_CN',
+    author,
     title,
     description,
     site,

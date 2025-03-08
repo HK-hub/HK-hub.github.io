@@ -1,11 +1,8 @@
 import path from "path";
 import fs from "fs";
-// 修改glob的导入方式，解决CommonJS模块导入问题
-import pkg from "glob";
-const { glob } = pkg;
+import yaml from "js-yaml";
 import { type SiteConfig } from "vitepress";
 import { log } from "console";
-import yaml from "js-yaml";
 import { metaData } from '../config/constants';
 
 // frontmatter必需字段
@@ -18,6 +15,36 @@ const requiredFields = {
   categories: false, // 分类（可选）
   tags: false        // 标签（可选）
 };
+
+/**
+ * 递归获取目录下的所有markdown文件
+ * @param dir 目录路径
+ * @param files 文件列表
+ * @returns markdown文件路径数组
+ */
+function getMarkdownFiles(dir: string, files: string[] = []): string[] {
+  const items = fs.readdirSync(dir);
+  
+  for (const item of items) {
+    const fullPath = path.join(dir, item);
+    const stat = fs.statSync(fullPath);
+    
+    // 排除node_modules和.vitepress目录
+    if (item === 'node_modules' || item === '.vitepress') {
+      continue;
+    }
+    
+    if (stat.isDirectory()) {
+      // 递归处理子目录
+      getMarkdownFiles(fullPath, files);
+    } else if (path.extname(item) === '.md') {
+      // 收集markdown文件
+      files.push(fullPath);
+    }
+  }
+  
+  return files;
+}
 
 /**
  * 处理markdown文件，补充缺失的frontmatter信息
@@ -78,7 +105,7 @@ async function appendFrontmatter(filePath: string): Promise<void> {
     
     // 作者
     if (!frontmatter.author) {
-      frontmatter.author = metaData.feedConfig.author
+      frontmatter.author = metaData.feedConfig.author;
       isUpdated = true;
     }
     
@@ -116,9 +143,9 @@ async function appendFrontmatter(filePath: string): Promise<void> {
       
       // 写入文件
       await fs.promises.writeFile(filePath, newContent, 'utf-8');
-      log(`成功更新frontmatter信息: ${filePath}`);
+      // log(`成功更新frontmatter信息: ${filePath}`);
     } else {
-      log(`无需更新frontmatter: ${filePath}`);
+      // log(`无需更新frontmatter: ${filePath}`);
     }
   } catch (error) {
     log(`处理文件失败: ${filePath}`, error);
@@ -134,11 +161,9 @@ export async function transformFrontmatter(config: SiteConfig): Promise<void> {
   
   // 获取所有markdown文件路径
   const srcDir = config.srcDir;
-  const markdownFiles = await glob(['**/*.md', '!node_modules', '!.vitepress'], {
-    cwd: srcDir,
-    absolute: true,
-  });
   
+  // 使用递归方式获取所有markdown文件
+  const markdownFiles = getMarkdownFiles(srcDir);
   log(`找到${markdownFiles.length}个markdown文件`);
   
   // 处理每个markdown文件
