@@ -13,7 +13,7 @@ const nav = [
     { 
       text: '归档', 
       items: [
-        { text: '分类', link: '/item-1' },
+        { text: '分类', link: '/categories' },
         { text: '标签', link: '/tags' },
         { text: '归档', link: '/document/guild/index.md' }
       ]

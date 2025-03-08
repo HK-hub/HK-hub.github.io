@@ -2,14 +2,14 @@ type Post = {
     frontMatter: {
         date: string
         title: string
-        categories: string
+        categories: string[]
         tags: string[]
         description: string
     }
     regularPath: string
 }
 
-
+// 初始化标签数据
 export function initTags(posts) {
     const data: any = {}
     for (let index = 0; index < posts.length; index++) {
@@ -39,18 +39,31 @@ export function initTags(posts) {
     return data
 }
 
-export function initCategory(post: Post[]) {
+// 初始化分类数据
+export function initCategory(posts) {
     const data: any = {}
-    for (let index = 0; index < post.length; index++) {
-        const element = post[index]
-        const category = element.frontMatter.categories
-        if (category) {
-            if (data[category]) {
-                data[category].push(element)
-            } else {
-                data[category] = []
-                data[category].push(element)
-            }
+    for (let index = 0; index < posts.length; index++) {
+        const element = posts[index]
+        const categories = element.frontMatter.categories
+        if (categories) {
+            categories.forEach((item) => {
+                if (data[item]) {
+                    data[item].push(element)
+                } else {
+                    data[item] = []
+                    data[item].push(element)
+                }
+            })
+        }
+    }
+
+    // 按date逆序排序
+    for (const key in data) {
+        if (Object.prototype.hasOwnProperty.call(data, key)) {
+            const element = data[key]
+            element.sort((a, b) => {
+                return new Date(b.frontMatter.date).getTime() - new Date(a.frontMatter.date).getTime()
+            })
         }
     }
     return data
