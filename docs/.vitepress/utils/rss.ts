@@ -4,6 +4,7 @@ import { Feed } from "feed";
 import { createContentLoader, type SiteConfig } from "vitepress";
 import { metaData } from "../config/constants";
 import { log } from "console";
+import dayjs from "dayjs";
 
 const hostname = metaData.feedConfig.hostname;
 
@@ -30,32 +31,100 @@ export async function createRssFile(config: SiteConfig) {
     // 按发布日期排序
     posts.sort((a, b) => Number(new Date(b.frontmatter.date)) - Number(new Date(a.frontmatter.date)))
 
-    // 生成feed item
-	for (const post of posts) {
-        const url = post?.url
-        const excerpt = post?.excerpt
-        const html = post?.html 
-
-        log('文章url：', post.url)
+    // 处理文章frontmatter，补充缺失信息
+    function processPostFrontmatter(post) {
+        const url = post?.url;
+        const excerpt = post?.excerpt;
+        const html = post?.html;
+        let frontmatter = post.frontmatter || {};
         
-        // 仅保留最近3篇文章
-        if(feed.items.length >= metaData.feedConfig.feedDocLimit) {
-            break;
-        }
+        // 提取文件名作为备用标题
         let fileName = url.split('/').pop();
-        // 如果fileName为空
         if(!fileName) {
             fileName = 'index';
         }
-        // 使用文章的frontmatter.title作为RSS标题，如果不存在则尝试从URL提取
-        const title = post?.frontmatter?.title || fileName || ''
-        log('文章标题：', title)
-        // 描述
-        const description = excerpt ||  post?.frontmatter?.description || metaData.feedConfig.description;
-        // 文章日期
-        const date = post?.frontmatter?.date || new Date()
         
-        feed.addItem({
+        // 补充标题信息
+        if (!frontmatter.title) {
+            // 尝试从HTML内容中提取h1标签作为标题
+            let titleFromContent = '';
+            if (html) {
+                const h1Match = html.match(/<h1[^>]*>([^<]+)<\/h1>/);
+                if (h1Match && h1Match[1]) {
+                    titleFromContent = h1Match[1].trim();
+                }
+            }
+            frontmatter.title = titleFromContent || fileName;
+        }
+        
+        // 补充日期信息
+        if (!frontmatter.date) {
+            // 使用当前日期
+            frontmatter.date = dayjs().format('YYYY-MM-DD');
+        }
+        
+        // 补充描述信息
+        if (!frontmatter.description) {
+            frontmatter.description = excerpt || 
+                (html ? html.replace(/<[^>]+>/g, '').substring(0, 200) + '...' : '') || 
+                metaData.feedConfig.description;
+        }
+        
+        // 补充作者信息
+        if (!frontmatter.author) {
+            frontmatter.author = metaData.feedConfig.author;
+        }
+        
+        // 补充封面图片
+        if (!frontmatter.cover) {
+            // 尝试从内容中提取第一张图片
+            let coverFromContent = '';
+            if (html) {
+                const imgMatch = html.match(/<img[^>]+src=["']([^"']+)["'][^>]*>/);
+                if (imgMatch && imgMatch[1]) {
+                    // 确保图片URL是绝对路径
+                    const imgSrc = imgMatch[1];
+                    if (imgSrc.startsWith('http')) {
+                        coverFromContent = imgSrc;
+                    } else if (imgSrc.startsWith('./') || imgSrc.startsWith('../') || imgSrc.startsWith('/')) {
+                        // 相对路径转为绝对路径
+                        coverFromContent = `${metaData.hostname}${imgSrc.replace(/^\.\//g, '/')}`;
+                    }
+                }
+            }
+            frontmatter.cover = coverFromContent || metaData.feedConfig.image;
+        }
+        
+        return {
+            url,
+            excerpt,
+            html,
+            frontmatter
+        };
+    }
+    
+    // 生成feed item
+	for (const post of posts) {
+        // 仅保留最近篇数限制的文章
+        if(feed.items.length >= metaData.feedConfig.feedDocLimit) {
+            break;
+        }
+        
+        // 处理并补充文章frontmatter
+        const processedPost = processPostFrontmatter(post);
+        const { url, excerpt, html, frontmatter } = processedPost;
+        
+        // 使用处理后的frontmatter信息
+        const title = frontmatter.title;
+        // 描述
+        const description = excerpt || frontmatter.description || metaData.feedConfig.description;
+        // 文章日期 - 确保是Date对象
+        const date = new Date(frontmatter.date);
+        // 文章封面
+        const cover = frontmatter.cover || ''
+        
+        // 创建feed item对象
+        const feedItem = {
             title,
             id: `${hostname}${url}`,
             link: `${hostname}${url}`,
@@ -63,13 +132,21 @@ export async function createRssFile(config: SiteConfig) {
             content: html,
             author: [
                 {
-                    name: metaData.feedConfig.author,
+                    name: frontmatter.author || metaData.feedConfig.author,
                     email: metaData.feedConfig.email,
                     link: metaData.feedConfig.link,
                 },
             ],
-            date: date
-        });
+            date: date,
+        };
+        
+        // 只有当cover不为空时才添加image属性
+        if (cover && cover.trim() !== '') {
+            (feedItem as any).image = cover;
+        }
+        
+        feed.addItem(feedItem);
+        log('添加RSS条目成功:', title);
 	}
 
     // 写入文件

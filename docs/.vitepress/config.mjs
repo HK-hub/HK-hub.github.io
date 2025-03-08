@@ -6,6 +6,8 @@ import readToJson from './components/read.js'
 import path from 'path'
 import { head } from './config/head.js'
 import { createRssFile } from './utils/rss.js'
+import { transformMarkdownFiles } from './utils/markdown-transform.js'
+import { transformFrontmatter } from './utils/frontmatter-transform.js'
 
 // 打印出配置
 // console.log('siteConfig:', JSON.stringify(siteConfig));
@@ -31,6 +33,14 @@ export default defineConfig({
   // markdown 配置
   markdown: markdownConfig,
 
+  // 构建开始时处理markdown文件
+  buildStart: async (config) => {
+    // 先处理frontmatter信息
+    await transformFrontmatter(config);
+    // 再添加公众号信息
+    await transformMarkdownFiles(config);
+  },
+  
   // RSS订阅构建
   buildEnd: createRssFile,
 

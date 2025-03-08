@@ -1,10 +1,12 @@
 // https://vitepress.dev/guide/custom-theme
 import { h, onMounted, watch, nextTick } from 'vue'
 import DefaultTheme from 'vitepress/theme'
+import { metaData } from '../config/constants'
 import OGMetadata from '../../components/OGMetadata.vue'
 import DocBefore from '../../components/DocBefore.vue'
 import CustomAds from '../../components/CustomAds.vue'
 import Comment  from '../../components/Comment.vue'
+import WechatAccount from '../../components/WechatAccount.vue'
 import Documate from '@documate/vue'
 import '@documate/vue/dist/style.css'
 import './style.css'
@@ -36,6 +38,15 @@ export default {
         qrcode: '../../public/static/img/qrcode.jpg',
         description: '您的一小点支持将是对我们最大的帮助'
       }]
+    }),
+    // 公众号组件
+    'doc-footer-before': () => h(WechatAccount, {
+      info: {
+        title: `扫码关注微信公众号`,
+        qrcode: '/static/img/qrcode.jpg',
+        qrcodeTitle: metaData.wechatInfo.qrcodeTitle,
+        description: '获取更多精彩内容！每周更新后端、前端、架构设计等技术文章，助力您的技术成长！'        
+      }
     }),
     // 评论组件
     'doc-after': () => h(Comment),
