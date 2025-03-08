@@ -11,9 +11,17 @@ const nav = [
       link: '/document/guild/one' 
     },
     { 
+      text: '归档', 
+      items: [
+        { text: '分类', link: '/item-1' },
+        { text: '标签', link: '/tags' },
+        { text: '归档', link: '/document/guild/index.md' }
+      ]
+    },
+    { 
         text: '汇总', 
         link: '/list' 
-      },
+    },
     { 
       text: '项目', 
       items: [

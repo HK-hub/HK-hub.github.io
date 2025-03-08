@@ -46,3 +46,19 @@ export function useDocs() {
         docData, categories, tags, docNum, tagNum
     }
 }
+
+// 从formatter.json获取文章数据
+export function getPosts() {
+    const posts = docData.map(post => ({
+        frontMatter: {
+            date: post.date,
+            title: post.title,
+            categories: post.categories,
+            tags: post.tags,
+            description: post.description
+        },
+        regularPath: post.link
+    }))
+    return posts
+}
+
