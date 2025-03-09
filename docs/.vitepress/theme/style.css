@@ -192,7 +192,6 @@
   max-width: 97% !important;
 }
 
-
 /** 侧边栏文字超出隐藏**/
 .VPSidebarItem .VPLink p {
   text-overflow: ellipsis;
