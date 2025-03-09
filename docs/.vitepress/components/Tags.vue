@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { computed, ref } from 'vue'
 import { useData, withBase } from 'vitepress'
-import { initTags } from '../.vitepress/utils/function'
-import { getPosts } from '../.vitepress/components/useDocs'
+import { initTags } from '../utils/archive'
+import { getPosts } from '../utils/useDocs'
 
 let url = location.href.split('?')[1]
 let params = new URLSearchParams(url)

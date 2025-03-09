@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { get } from 'http';
 import { getAvatarUrl } from '../utils/contributors'
-import { contributorList } from './contributors.js'
+import { contributorList } from '../config/contributors.js'
 </script>
 
 <template>

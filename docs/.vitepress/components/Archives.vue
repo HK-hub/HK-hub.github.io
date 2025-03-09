@@ -1,11 +1,12 @@
 <script lang="ts" setup>
 import { useData, withBase } from 'vitepress'
 import { computed } from 'vue'
-import { useYearSort } from '../.vitepress/utils/function'
-import { getPosts } from '../.vitepress/components/useDocs'
+import { useYearSort } from '../utils/archive'
+import { getPosts } from '../utils/useDocs'
 
 const posts = getPosts()
-const data = computed(() => useYearSort(posts))
+// 使用类型断言来解决类型不匹配的问题
+const data = computed(() => useYearSort(posts as any))
 </script>
 
 <template>

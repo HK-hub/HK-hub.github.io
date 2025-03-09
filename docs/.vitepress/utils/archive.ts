@@ -1,16 +1,9 @@
-type Post = {
-    frontMatter: {
-        date: string
-        title: string
-        categories: string[]
-        tags: string[]
-        description: string
-    }
-    regularPath: string
-}
+import { ArticleMeta } from './read'
+import { Post } from './useDocs'
+
 
 // 初始化标签数据
-export function initTags(posts) {
+export function initTags(posts: Post[]) {
     const data: any = {}
     for (let index = 0; index < posts.length; index++) {
         const element = posts[index]
@@ -40,7 +33,7 @@ export function initTags(posts) {
 }
 
 // 初始化分类数据
-export function initCategory(posts) {
+export function initCategory(posts: Post[]) {
     const data: any = {}
     for (let index = 0; index < posts.length; index++) {
         const element = posts[index]
@@ -69,7 +62,7 @@ export function initCategory(posts) {
     return data
 }
 
-export function useYearSort(posts) {
+export function useYearSort(posts: Post[]): { year: string; posts: Post[] }[] {
     // 首先按日期降序排序所有文章
     posts.sort((a, b) => {
         return new Date(b.frontMatter.date).getTime() - new Date(a.frontMatter.date).getTime()
@@ -84,7 +77,10 @@ export function useYearSort(posts) {
             if (!yearMap.has(year)) {
                 yearMap.set(year, [])
             }
-            yearMap.get(year).push(post)
+            const yearPosts = yearMap.get(year)
+            if (yearPosts) {
+                yearPosts.push(post)
+            }
         }
     })
 

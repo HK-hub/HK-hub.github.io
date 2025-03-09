@@ -13,9 +13,9 @@ const nav = [
     { 
       text: '归档', 
       items: [
-        { text: '分类', link: '/categories' },
-        { text: '标签', link: '/tags' },
-        { text: '归档', link: '/archives' }
+        { text: '分类', link: '/pages/categories' },
+        { text: '标签', link: '/pages/tags' },
+        { text: '归档', link: '/pages/archives' }
       ]
     },
     { 

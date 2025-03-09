@@ -1,15 +1,15 @@
 ---
 layout: page
 page: true
-title: Category
-description: Category
+title: Archive
+description: Archive
 aside: false
 pageClass: category-page
 sidebar: false
 ---
 
 <script setup>
-import Category from './components/Category.vue'
+import Archvies from '../.vitepress/components/Archives.vue'
 </script>
 
-<Category/>
+<Archvies/>

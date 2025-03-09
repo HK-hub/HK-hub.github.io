@@ -2,7 +2,7 @@ import { defineConfig } from 'vitepress'
 import siteConfig from './config/site.js'
 import markdownConfig from './config/markdown.js'
 import themeConfig from './config/theme.js'
-import readToJson from './components/read.js'
+import { readToJson } from './utils/read'
 import path from 'path'
 import { head } from './config/head.js'
 import { createRssFile } from './utils/rss.js'
@@ -19,7 +19,7 @@ transformFrontmatter({
   srcDir: path.resolve(__dirname, '../document')
 })
 // 读取所有markdown 文件
-readToJson(path.resolve(__dirname, '../document'), path.resolve(__dirname, './components/frontmatter.json'))
+readToJson(path.resolve(__dirname, '../document'), path.resolve(__dirname, './config/frontmatter.json'))
 
 
 // https://vitepress.dev/reference/site-config

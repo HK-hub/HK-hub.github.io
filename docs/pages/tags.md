@@ -6,7 +6,7 @@ description: 按标签和分类浏览所有文章
 sidebar: false
 ---
 <script setup>
-import Tags from './components/Tags.vue'
+import Tags from '../.vitepress/components/Tags.vue'
 </script>
 <ClientOnly>
     <Tags />

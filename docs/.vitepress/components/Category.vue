@@ -1,10 +1,12 @@
 <script lang="ts" setup>
 import { useData, withBase } from 'vitepress'
 import { computed } from 'vue'
-import { initCategory } from '../.vitepress/utils/function'
-import { getPosts } from '../.vitepress/components/useDocs'
+import { initCategory } from '../utils/archive'
+import { getPosts } from '../utils/useDocs'
 
+// 获取所有文章
 const posts = getPosts()
+// 根据分类初始化文章数据
 const data = computed(() => initCategory(posts))
 </script>
 
