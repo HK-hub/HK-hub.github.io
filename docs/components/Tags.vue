@@ -52,10 +52,38 @@ if (defaultDisplayTag) {
     font-size: 0.875rem;
     line-height: 25px;
     background-color: var(--vp-c-bg-alt);
-    transition: 0.4s;
-    border-radius: 2px;
-    color: var(--vp-c-text-1);
+    transition: all 0.3s ease;
+    border-radius: 4px;
+    color: var(--vp-c-text-2);
     cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tag:hover {
+    background-color: var(--vp-c-brand);
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.tag sup {
+    color: var(--vp-c-brand);
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.tag:hover sup {
+    color: white;
+}
+
+.tag:hover::before {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: var(--vp-c-brand);
+    margin-bottom: -5px;
 }
 
 .tag sup {

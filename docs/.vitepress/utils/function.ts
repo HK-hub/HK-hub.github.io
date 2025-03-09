@@ -69,23 +69,32 @@ export function initCategory(posts) {
     return data
 }
 
-export function useYearSort(post: Post[]) {
-    const data = []
-    let year = '0'
-    let num = -1
-    for (let index = 0; index < post.length; index++) {
-        const element = post[index]
-        if (element.frontMatter.date) {
-            const y = element.frontMatter.date.split('-')[0]
-            if (y === year) {
-                data[num].push(element)
-            } else {
-                num++
-                data[num] = [] as any
-                data[num].push(element)
-                year = y
+export function useYearSort(posts) {
+    // 首先按日期降序排序所有文章
+    posts.sort((a, b) => {
+        return new Date(b.frontMatter.date).getTime() - new Date(a.frontMatter.date).getTime()
+    })
+
+    const yearMap = new Map<string, Post[]>()
+    
+    // 遍历排序后的文章进行分组
+    posts.forEach(post => {
+        if (post.frontMatter.date) {
+            const year = new Date(post.frontMatter.date).getFullYear().toString()
+            if (!yearMap.has(year)) {
+                yearMap.set(year, [])
             }
+            yearMap.get(year).push(post)
         }
-    }
-    return data
+    })
+
+    // 转换为按年份降序排列的数组
+    const result = Array.from(yearMap.entries())
+        .sort(([yearA], [yearB]) => Number(yearB) - Number(yearA))
+        .map(([year, posts]) => ({
+            year,
+            posts
+        }))
+
+    return result
 }
