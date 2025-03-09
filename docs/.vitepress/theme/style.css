@@ -100,6 +100,21 @@
 }
 
 /**
+ * Component: Doc
+ * -------------------------------------------------------------------------- */
+
+ :root {
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: -webkit-linear-gradient(
+    120deg,
+    #bd34fe 30%,
+    #41d1ff
+  );
+}
+
+
+
+/**
  * Component: Scrollbar
  * 自定义滚动条样式，提供更好的视觉体验
  * -------------------------------------------------------------------------- */
@@ -171,6 +186,12 @@
 .DocSearch {
   --docsearch-primary-color: var(--vp-c-brand-1) !important;
 }
+
+/** doc文件内容宽度 **/
+.VPDoc.has-aside .content-container {
+  max-width: 97% !important;
+}
+
 
 /** 侧边栏文字超出隐藏**/
 .VPSidebarItem .VPLink p {

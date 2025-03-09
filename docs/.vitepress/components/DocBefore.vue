@@ -22,7 +22,7 @@ const { frontmatter } = useData() //这里的frontmatter就是各个md文件中�
 <style scoped>
 .page-info {
     font-size: 13px;
-    margin-right: 12px;
+    margin-right: 5px;
     display: inline-flex;
     align-items: center;
     transition: all 0.3s ease;
@@ -34,12 +34,12 @@ const { frontmatter } = useData() //这里的frontmatter就是各个md文件中�
 }
 
 .author-info {
-    font-size: 17px;
+    font-size: 16px;
     color: var(--vp-c-text-2);
 }
 
 .date-info {
-    font-size: 17px;
+    font-size: 16px;
     color: var(--vp-c-text-2);
 }
 
@@ -52,8 +52,8 @@ const { frontmatter } = useData() //这里的frontmatter就是各个md文件中�
 
 .category,
 .tag {
-    padding: 4px 10px;
-    border-radius: 16px;
+    padding: 4px 5px;
+    border-radius: 8px;
     font-size: 13px;
     font-weight: 600;
     cursor: pointer;
