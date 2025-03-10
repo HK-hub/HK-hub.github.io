@@ -4,7 +4,7 @@
     "**/*.md",
     "**/*.mdx"
   ],
-  "backend": "",
+  "backend": "https://test123.us.aircode.run/upload",
   "exclude": [
     "node_modules/**/*",
     "**/README.md",

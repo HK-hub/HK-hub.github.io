@@ -25,10 +25,11 @@ export default {
     'doc-top': () => h(OGMetadata),
     // 文章分类，标签展示
     'doc-before': () => h(DocBefore),
-    /** // Ask AI
+    // Ask AI
     'nav-bar-content-before': () => h(Documate, {
-      endpoint: '',
-    }), **/
+      // Replace the URL with your own one
+      endpoint: 'https://test123.us.aircode.run/ask',
+    }),
     // 自定义广告组件
     'aside-ads-after': () => h(CustomAds, {
       items: [{
@@ -51,11 +52,16 @@ export default {
   }),
 
   enhanceApp({ app, router, siteData }) {
-    // 页面访问统计
+    // 不蒜子页面访问统计
     if (inBrowser) {
       router.onAfterRouteChanged = (to) => {
         busuanzi.fetch()
       }
+    }
+
+    // 百度页面访问统计
+    if (typeof _hmt !== 'undefined') {
+      _hmt.push(['_trackPageview', to]);
     }
   },
 
