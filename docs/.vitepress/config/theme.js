@@ -22,7 +22,14 @@ const themeConfig = {
 
     // 搜索栏
     search: {
-      provider: 'local'
+      provider: 'algolia',
+      options: {
+        appId: 'O66TCPOEXP',
+        apiKey: '943184a59fb1852faddd7c025bbb4320',
+        indexName: 'HKBlog',
+        placeholder: "请输入关键词",
+        buttonText: "搜索"
+      }
     },
 
     // 导航栏右上角社交账号链接
