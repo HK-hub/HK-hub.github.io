@@ -56,10 +56,10 @@ export default {
       }
     }
 
-    // 百度页面访问统计
+    /** // 百度页面访问统计
     if (typeof _hmt !== 'undefined') {
       _hmt.push(['_trackPageview', to]);
-    }
+    } **/
   },
 
   setup() {
