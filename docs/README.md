@@ -1,7 +1,7 @@
 # HBlog - 基于VitePress的现代个人博客系统
 
 <p align="center">
-  ![logo](./public/logo.png)
+  <img src="https://raw.githubusercontent.com/hk-hub/HBlog/main/docs/public/logo.png" alt="logo">
 </p>
 
 <p align="center">

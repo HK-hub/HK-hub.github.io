@@ -22,7 +22,7 @@ const themeConfig = {
 
     // 搜索栏
     search: {
-      provider: 'algolia',
+      provider: 'local',
       options: {
         appId: 'O66TCPOEXP',
         apiKey: '943184a59fb1852faddd7c025bbb4320',
