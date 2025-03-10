@@ -1,11 +1,9 @@
 {
     "appId": "O66TCPOEXP",
     "apiKey": "943184a59fb1852faddd7c025bbb4320",
-    // 填写自己的索引名称
-    "index_name": "HKBlog",
-    // 填写自己的网站地址
+    "index_name": "HKBlog", // 填写自己的索引名称
     "start_urls": [
-        "https://hk-hub.github.io/"
+        "https://hk-hub.github.io/" // 填写自己的网站地址
     ],
     "rateLimit": 8,
     "maxDepth": 10,
