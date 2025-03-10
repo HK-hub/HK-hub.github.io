@@ -10,8 +10,10 @@ jobs:
       - uses: actions/checkout@v3
       - name: Get the content of algolia.json as config
         id: algolia_config
-        # 获取字符串，写入变量
-        run: echo "config='$(cat crawlerConfig.json | jq -c .)'" >> $GITHUB_OUTPUT
+        run: |
+          configFile=$(cat crawlerConfig.json)
+          configJson=\"${configFile}\"
+          echo "config=$(echo $configJson | jq -c .)" >> $GITHUB_OUTPUT
       - name: Push indices to Algolia
         uses: signcl/docsearch-scraper-action@master
         env:
