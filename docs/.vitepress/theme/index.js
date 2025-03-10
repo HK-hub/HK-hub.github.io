@@ -26,10 +26,7 @@ export default {
     // 文章分类，标签展示
     'doc-before': () => h(DocBefore),
     // Ask AI
-    'nav-bar-content-before': () => h(Documate, {
-      // Replace the URL with your own one
-      endpoint: 'https://test123.us.aircode.run/ask',
-    }),
+    
     // 自定义广告组件
     'aside-ads-after': () => h(CustomAds, {
       items: [{

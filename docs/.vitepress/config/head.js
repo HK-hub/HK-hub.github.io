@@ -22,7 +22,7 @@ export const head = [
     ['meta', { property: 'og:image', content: metaData.image }],
     
     // git discussion评论
-    ['script', {src: 'https://esm.sh/giscus', type: 'module'}]
+    ['script', {src: 'https://esm.sh/giscus', type: 'module'}],
 
     // 百度页面访问量统计
     [ 'script', {}, `

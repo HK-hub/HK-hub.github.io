@@ -22,7 +22,7 @@ const themeConfig = {
 
     // 搜索栏
     search: {
-      provider: 'local',
+      provider: 'local'
     },
 
     // 导航栏右上角社交账号链接
