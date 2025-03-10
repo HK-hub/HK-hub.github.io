@@ -25,8 +25,6 @@ export default {
     'doc-top': () => h(OGMetadata),
     // 文章分类，标签展示
     'doc-before': () => h(DocBefore),
-    // Ask AI
-    
     // 自定义广告组件
     'aside-ads-after': () => h(CustomAds, {
       items: [{
