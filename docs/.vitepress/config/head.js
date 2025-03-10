@@ -12,6 +12,9 @@ export const head = [
     ['meta', { name: 'theme-color', content: '#3c8772' }],
     ['meta', { name: 'baidu_union_verify', content: '19bd8ed3f02a91e23043efdf1d823107' }],
 
+    // algolia 搜索
+    ['meta', { name: 'google-site-verification', content: '1824D8067D6740B6' }],
+
     // 开放图协议
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:locale', content: metaData.locale }],
