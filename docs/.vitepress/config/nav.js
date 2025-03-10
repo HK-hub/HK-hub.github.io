@@ -20,14 +20,7 @@ const nav = [
     },
     { 
       text: '项目', 
-      items: [
-        { text: 'Geek-IM', link: '/document/guild/one' },
-        { text: 'Item B', link: '/document/guild/two' },
-        { text: 'Item C', link: '/document/guild/index' },
-        { text: 'three', link: '/document/guild/three'},
-        { text: '短链接生成器', link: '/document/short-url-generator' },
-        { text: 'hRPC', link: '/document/h-rpc' }
-      ]
+      link: '/pages/projects',
     },
     { 
       text: '指南', 
