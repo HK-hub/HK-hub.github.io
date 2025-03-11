@@ -30,6 +30,10 @@ const nav = [
         { text: 'Item C', link: '/document/guild/index.md' }
       ]
     },
+    { 
+      text: '关于', 
+      link: '/pages/about',
+    },
 ]
 
 export default nav
